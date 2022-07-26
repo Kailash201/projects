@@ -4,3 +4,5 @@ DCF.py: A script that scrapes data from the internet to calculate the intrinsic 
 Snake.py A recreation of the classic snake game in python using pygame library.
 
 you2spot.py A Script that creates a playlist in Spotify and adds songs to it from your Youtube playlist. In short, syncing your Youtube Playlist to your Spotify playlist. Get the API key from https://developers.google.com/youtube/v3/getting-started. Youtube channel ID can be received from the url of your youtube profile. Client ID and client secret will be given when you login to spotify dashboard. https://developer.spotify.com/dashboard/login. More info: https://developer.spotify.com/documentation/web-api/quick-start/
+
+Tetris: Tetris game coded for android devices on android studio using Java
