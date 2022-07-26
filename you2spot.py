@@ -5,14 +5,14 @@ import requests
 from flask import Flask, render_template, redirect, request
 import base64
 
-API_KEY = "AIzaSyA5iqFQnLL-cgYCcGOtZXKrpTyp3McmnmA"  # Get from google console developer
-chanId = "UCcP7HBCO1_mcTkbG35zJFcQ"  # Your youtube channel ID
+API_KEY = "YOUR API KEY"  # Get from google console developer
+chanId = "YOUR YOURTUBE CHANNEL ID"  # Your youtube channel ID
 
-client_id = "8fcfd5bf7f7f4356b81b58828f0d6a74"  # Get your key from Spotify developer
-client_secret = "a6a31336266446e79c1e4123f4a653fb"  # Get your key from Spotify developer
+client_id = "YOUR CLIENT ID"  # Get your key from Spotify developer
+client_secret = "YOUR CLIENT SECRET"  # Get your key from Spotify developer
 
 # Spotify endpoints
-redirect_url = "http://127.0.0.1:5000/redirect"  # redirect_url = your local host/redirect
+redirect_url = "YOUR LOCAL HOST OR WEBSITE/redirect"  # redirect_url = your local host/redirect
 auth_url = "https://accounts.spotify.com/authorize"
 api_token = "https://accounts.spotify.com/api/token"
 spot_api = "https://api.spotify.com/v1"
@@ -20,7 +20,7 @@ spot_api = "https://api.spotify.com/v1"
 app = Flask(__name__)
 
 listOfVideos = []
-name_of_youtube_pl = "Swing"  # The name of your youtube playlist to add to your spotify (case sensitive)
+name_of_youtube_pl = ""  # The name of your youtube playlist to add to your spotify (case sensitive)
 vidInd = 0
 
 
