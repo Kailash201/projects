@@ -107,13 +107,10 @@ public class MainActivity extends AppCompatActivity {
                 setValue(Yvalue);
                 System.out.println(Yvalue);
                 shape.setY(getValue()*50);
-                Log.d("TAG", "rotation: y"+relativeLayout.getY());
                 if(collisionDetector(shape,rotationCounter)){
                     va.pause();
                     if(va.isPaused()){
                         newUpdate(shape,rotationCounter);
-                        Log.d("TAG", "rotation: x"+relativeLayout.getX());
-                        Log.d("TAG", "rotation: yyy "+rotationCounter);
                         shapeSpawner();
                         lineDetector();
                         rotationCounter=0;
@@ -153,7 +150,6 @@ public class MainActivity extends AppCompatActivity {
                 updateX=2;
             if(shape.getWidth()==50)
                 updateX=3;
-            Log.d("TAG", "getwidth: " + shape.getWidth() + shape.getX());Log.d("TAG", "getheight: " + shape.getHeight());
             float[] rotatedCoords = rotation();
             int xS = (int) shape.getX() / 50 - (shape.getHeight()/50); // Due to rotation, the x point will shift back by the shape's height
             int xY = (int) (shape.getY() / 50) + 1;
@@ -185,8 +181,6 @@ public class MainActivity extends AppCompatActivity {
                     counter++;
                     if (arrayY > -1 && arrayY < yGrid) {
                         if (fPoints[arrayY][arrayX] == 1) {
-                            Log.d("TAG", "arrayx0 " + arrayX);
-                            Log.d("TAG", "arrayY0 " + arrayY);
                             return true;
                         }
                     }
@@ -206,8 +200,6 @@ public class MainActivity extends AppCompatActivity {
                     counter++;
                     if (arrayY > -1 && arrayY < yGrid) {
                         if (fPoints[arrayY][arrayX] == 1) {
-                            Log.d("TAG", "arrayx0 " + arrayX);
-                            Log.d("TAG", "arrayY0 " + arrayY);
                             return true;
                         }
                     }
@@ -223,10 +215,7 @@ public class MainActivity extends AppCompatActivity {
         if(rotation==0) {
             int sY = (int) shape.getY() / 50;
             int sX = (int) shape.getX() / 50;
-            Log.d("TAG", "ShapeY: " + shape.getY());
-            Log.d("TAG", "ShapeX: " + shape.getX());
             int childCount = shape.getChildCount();
-            Log.d("TAG", "count: " + childCount);
             View[] eachChild = new View[childCount];
             for (int i = 0; i < childCount; i++) {
                 if (shape.getChildAt(i) != null)
@@ -241,11 +230,8 @@ public class MainActivity extends AppCompatActivity {
             for (int i = 0; i < childCount; i++) {
                 int xx = (int) (eachChild[i].getX() / 50) + sX;
                 int y =  (int) (eachChild[i].getY() / 50) + sY;
-                Log.d("TAG", "ChildYX: " + y + xx);
-                if (y > -1 && y < yGrid) {
+                 if (y > -1 && y < yGrid) {
                     fPoints[y][xx] = 1;
-                    Log.d("TAG", "arrayx1 " + xx);
-                    Log.d("TAG", "arrayY1 " + y);
                     newChild[i].setX(xx*50);
                     newChild[i].setY((y-1)*50);
                     rL.addView(newChild[i]);
@@ -262,7 +248,6 @@ public class MainActivity extends AppCompatActivity {
             if(shape.getWidth()==50)
                 updateX=3;
             int childCount = shape.getChildCount();
-            Log.d("TAG", "count: " + childCount);
             rL.removeView(shape);
             View[] newChild = new View[4];
             for(int j =0;j<4;j++){
@@ -271,21 +256,15 @@ public class MainActivity extends AppCompatActivity {
             }
             int sY = (int) shape.getY() / 50; //getY will give 1700
             int sX = (int) (shape.getX() / 50)-(shape.getHeight()/50);
-            Log.d("TAG", "height " + shape.getHeight());
-            Log.d("TAG", "ShapeX: " + shape.getX());
             float[] newCoords = rotation();
             int counter=0;
             for(int i=0;i<4;i++){
                 int arrayX = (int)(newCoords[counter]/50) + sX+updateX;
-                Log.d("TAG", "rotation xx" + newCoords[counter]);
                 counter++;
                 int arrayY = (int)(newCoords[counter]/50) + sY;
-                Log.d("TAG", "rotation yy " + newCoords[counter]);
                 counter++;
                 if (arrayY > -1 && arrayY < yGrid) {
                     fPoints[arrayY][arrayX] = 1;
-                    Log.d("TAG", "arrayx " + arrayX);
-                    Log.d("TAG", "arrayY " + arrayY);
                     newChild[i].setX(arrayX*50);
                     newChild[i].setY((arrayY-1)*50);
                     rL.addView(newChild[i]);
@@ -296,10 +275,7 @@ public class MainActivity extends AppCompatActivity {
         if(rotation==2){
             int sY = (int) shape.getY() / 50;
             int sX = (int) (shape.getX() / 50) -1;
-            Log.d("TAG", "height " + sY);
-            Log.d("TAG", "ShapeX: " +sX );
             int childCount = shape.getChildCount();
-            Log.d("TAG", "count: " + childCount);
             rL.removeView(shape);
             View[] newChild = new View[4];
             for(int j =0;j<4;j++){
@@ -310,15 +286,11 @@ public class MainActivity extends AppCompatActivity {
             int counter=0;
             for(int i=0;i<4;i++){
                 int arrayX = (int)(newCoords[counter]/50) + sX;
-                Log.d("TAG", "rotation xx" + newCoords[counter]);
                 counter++;
                 int arrayY = (int)(sY+(newCoords[counter]/50));
-                Log.d("TAG", "rotation yy " + newCoords[counter]);
                 counter++;
                 if (arrayY > -1 && arrayY < yGrid) {
                     fPoints[arrayY][arrayX] = 1;
-                    Log.d("TAG", "arrayx2 " + arrayX);
-                    Log.d("TAG", "arrayY2 " + arrayY);
                     newChild[i].setX(arrayX*50);
                     newChild[i].setY((arrayY-1)*50);
                     rL.addView(newChild[i]);
@@ -330,10 +302,7 @@ public class MainActivity extends AppCompatActivity {
         if(rotation==3){
             int sY = (int) shape.getY() / 50;
             int sX = (int) (shape.getX() / 50) ;
-            Log.d("TAG", "height " + sY);
-            Log.d("TAG", "ShapeX: " +sX );
             int childCount = shape.getChildCount();
-            Log.d("TAG", "count: " + childCount);
             rL.removeView(shape);
             View[] newChild = new View[4];
             for(int j =0;j<4;j++){
@@ -344,15 +313,11 @@ public class MainActivity extends AppCompatActivity {
             int counter=0;
             for(int i=0;i<4;i++){
                 int arrayX = (int)(newCoords[counter]/50) + sX;
-                Log.d("TAG", "rotation xx" + newCoords[counter]);
                 counter++;
                 int arrayY = (int)(sY+(newCoords[counter]/50));
-                Log.d("TAG", "rotation yy " + newCoords[counter]);
                 counter++;
                 if (arrayY > -1 && arrayY < yGrid) {
                     fPoints[arrayY][arrayX] = 1;
-                    Log.d("TAG", "arrayx2 " + arrayX);
-                    Log.d("TAG", "arrayY2 " + arrayY);
                     newChild[i].setX(arrayX*50);
                     newChild[i].setY((arrayY-1)*50);
                     rL.addView(newChild[i]);
@@ -408,7 +373,6 @@ public class MainActivity extends AppCompatActivity {
         tempScore+=1000;
         points.setText(String.valueOf(score));
         points.setTextSize(20);
-        Log.d("TAG", "pointsSystem: "+tempScore);
         if(tempScore==5000){
             setSpeed(getSpeed()-1000);
             TextView whatLevel = (TextView)findViewById(R.id.whatlevel);
@@ -808,27 +772,15 @@ public class MainActivity extends AppCompatActivity {
                 counter++;
                 coords[counter]= relativeLayout.getChildAt(i).getY();
                 counter++;
-                Log.d("TAG", "rotatttion: x"+relativeLayout.getChildAt(i).getX());
-                Log.d("TAG", "rotatttion: y"+relativeLayout.getChildAt(i).getY());
-
+           
             }
             Matrix matrix = new Matrix();
             matrix.setRotate(90,coords[0],coords[1]);
             matrix.mapPoints(coords);
             relativeLayout.setPivotX(0);
             relativeLayout.setPivotY(0);
-            Log.d("TAG", "rotation: x"+relativeLayout.getPivotX());
-            Log.d("TAG", "rotation: y"+relativeLayout.getPivotY());
             relativeLayout.setRotation(90);
 
-            for(int i=0;i<childCount;i++){
-                Log.d("TAG", "rotatttion: x"+relativeLayout.getChildAt(i).getX());
-                Log.d("TAG", "rotatttion: y"+relativeLayout.getChildAt(i).getY());
-
-            }
-
-
-            Log.d("TAG", "rotxxxxxx"+relativeLayout.getX());
             return coords;
         }
         if(rotationCounter==2){
@@ -846,11 +798,8 @@ public class MainActivity extends AppCompatActivity {
             matrix.mapPoints(coords);
             relativeLayout.setPivotX(0);
             relativeLayout.setPivotY(0);
-            Log.d("TAG", "rotation: x1"+coords[0]);
-            Log.d("TAG", "rotation: yonw"+coords[1]);
             relativeLayout.setRotation(180);
 
-            Log.d("TAG", "rotxxxxxx"+relativeLayout.getX());
             return coords;
         }
         if(rotationCounter==3){
@@ -868,11 +817,8 @@ public class MainActivity extends AppCompatActivity {
             matrix.mapPoints(coords);
             relativeLayout.setPivotX(0);
             relativeLayout.setPivotY(0);
-            Log.d("TAG", "rotation: x1"+coords[0]);
-            Log.d("TAG", "rotation: yonw"+coords[1]);
             relativeLayout.setRotation(270);
 
-            Log.d("TAG", "rotxxxxxx"+relativeLayout.getX());
             return coords;
         }
         if(rotationCounter==0){
